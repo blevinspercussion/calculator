@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid black;
+    width: 280px;
+    padding: 10px;
+}
+
+.calc-row {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+}
+
+.calc-button {
+    font-size: xx-large;
+}
+
+.output {
+    background-color: gray;
+}
