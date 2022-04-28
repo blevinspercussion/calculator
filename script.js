@@ -1,13 +1,19 @@
 // Element selectors
-display = document.querySelector('.display');
-numButtons = document.querySelectorAll('.num-button');
+const display = document.querySelector('.display');
+const numButtons = document.querySelectorAll('.num-button');
+const opButtons = document.querySelectorAll('.op-button');
+const clearButton = document.querySelector('.clear-button');
+const enterButton = document.querySelector('.enter-button');
 
+
+// Initialize Variables
+let displayValue = '0';
+let num1 = 0;
+let num2 = 0;
 
 // Initialize display
-display.textContent = '0';
+display.textContent = displayValue;
 
-
-let displayValue = 0;
 
 
 // Math functions
@@ -44,15 +50,28 @@ function operate(operator, num1, num2) {
             break;
     };
 };
+/////////////////////////////
+//   Event Listeners
+/////////////////////////////
 
-// ---------Listeners--------
-
+// Add event listeners to number buttons
 numButtons.forEach(button => {
-    button.addEventListener('click', event => {
+    button.addEventListener('click', () => {
         if (display.textContent === '0') {
             display.textContent = '';
         }
         display.textContent += button.textContent;
+        displayValue = parseInt(display.textContent);
+    });
+});
+
+opButtons.forEach(button => {
+    button.addEventListener('click', () => {
 
     });
+});
+
+clearButton.addEventListener('click', () => {
+    displayValue = 0;
+    display.textContent = displayValue;
 });
