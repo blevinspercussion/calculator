@@ -1,6 +1,16 @@
-let num1 = 5;
-let num2 = 10;
+// Element selectors
+display = document.querySelector('.display');
+numButtons = document.querySelectorAll('.num-button');
 
+
+// Initialize display
+display.textContent = '0';
+
+
+let displayValue = 0;
+
+
+// Math functions
 
 function add(num1, num2) {
     return num1 + num2;
@@ -35,3 +45,14 @@ function operate(operator, num1, num2) {
     };
 };
 
+// ---------Listeners--------
+
+numButtons.forEach(button => {
+    button.addEventListener('click', event => {
+        if (display.textContent === '0') {
+            display.textContent = '';
+        }
+        display.textContent += button.textContent;
+
+    });
+});
