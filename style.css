@@ -3,6 +3,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: black;
+}
+
+h1 {
+    color: white;
 }
 
 .calculator {
@@ -15,7 +20,8 @@ body {
     width: 280px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 2px 2px 8px;
+    box-shadow: 5px 5px 10px purple;
+    background-color: gray;
 }
 
 .calc-row {
@@ -32,6 +38,12 @@ body {
 
 .display {
     background-color: lightgray;
+    color: black;
     width: 250px;
     align-self: flex-end;
+}
+
+.op-button {
+    background: rgb(55, 18, 84);
+    color: white;
 }
