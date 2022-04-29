@@ -13,6 +13,7 @@ let num2 = 0;
 let operator = '';
 let total = 0;
 let displayClear = false;
+let enter = false;
 
 // Initialize display
 display.textContent = displayValue;
@@ -75,7 +76,7 @@ numButtons.forEach(button => {
 
 opButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (total === 0) {
+        if (total === 0 || enter === true) {
             total = parseInt(display.textContent);;
             operator = button.textContent;
             console.log(total, operator);
@@ -105,8 +106,9 @@ enterButton.addEventListener('click', () => {
     } else {
         total = operate(operator, total, parseInt(display.textContent));
         display.textContent = total;
-        operator = '';
+        // operator = '';
         displayClear = true;
+        enter = true;
         // total = 0;
     };
 });
