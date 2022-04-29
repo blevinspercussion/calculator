@@ -10,6 +10,9 @@ const enterButton = document.querySelector('.enter-button');
 let displayValue = '0';
 let num1 = 0;
 let num2 = 0;
+let operator = '';
+let total = 0;
+let displayClear = false;
 
 // Initialize display
 display.textContent = displayValue;
@@ -42,7 +45,7 @@ function operate(operator, num1, num2) {
         case '-':
             return subtract(num1, num2);
             break;
-        case '*':
+        case 'x':
             return multiply(num1, num2);
             break;
         case '/':
@@ -54,10 +57,11 @@ function operate(operator, num1, num2) {
 //   Event Listeners
 /////////////////////////////
 
-// Add event listeners to number buttons
+// Event listeners for number buttons
 numButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (display.textContent === '0') {
+        if (display.textContent === '0' || displayClear === true) {
+            displayClear = false;
             display.textContent = '';
         }
         display.textContent += button.textContent;
@@ -65,13 +69,31 @@ numButtons.forEach(button => {
     });
 });
 
+
 opButtons.forEach(button => {
     button.addEventListener('click', () => {
-
+        if (total === 0) {
+            total = parseInt(display.textContent);;
+            operator = button.textContent;
+            console.log(total, operator);
+            displayClear = true;
+        } else {
+            operator = button.textContent;
+            total = operate(operator, total, parseInt(display.textContent));
+        }
     });
 });
 
+// Event listener for clear button
 clearButton.addEventListener('click', () => {
+    total = 0;
     displayValue = 0;
+    num1 = 0;
     display.textContent = displayValue;
+});
+
+// Event listener for enter button
+enterButton.addEventListener('click', () => {
+    total = operate(operator, total, parseInt(display.textContent));
+    display.textContent = total;
 });

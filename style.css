@@ -1,5 +1,6 @@
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -13,6 +14,8 @@ body {
     border: 2px solid black;
     width: 280px;
     padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px;
 }
 
 .calc-row {
@@ -24,6 +27,7 @@ body {
 
 .calc-button {
     font-size: xx-large;
+    border-radius: 5px;
 }
 
 .display {
