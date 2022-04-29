@@ -73,7 +73,19 @@ numButtons.forEach(button => {
     });
 });
 
+numButtons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        button.classList.add('num-button-hover');
+    });
+});
 
+numButtons.forEach(button => {
+    button.addEventListener('mouseleave', () => {
+        button.classList.remove('num-button-hover');
+    });
+});
+
+// Event listeners for operator buttons
 opButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (total === 0 || enter === true) {
@@ -91,7 +103,19 @@ opButtons.forEach(button => {
     });
 });
 
-// Event listener for clear button
+opButtons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        button.classList.add('op-button-hover');
+    });
+});
+
+opButtons.forEach(button => {
+    button.addEventListener('mouseleave', () => {
+        button.classList.remove('op-button-hover');
+    });
+});
+
+// Event listeners for clear button
 clearButton.addEventListener('click', () => {
     total = 0;
     displayValue = 0;
@@ -99,7 +123,15 @@ clearButton.addEventListener('click', () => {
     display.textContent = displayValue;
 });
 
-// Event listener for enter button
+clearButton.addEventListener('mouseover', () => {
+    clearButton.classList.add('num-button-hover');
+});
+
+clearButton.addEventListener('mouseleave', () => {
+    clearButton.classList.remove('num-button-hover');
+});
+
+// Event listeners for enter button
 enterButton.addEventListener('click', () => {
     if (display.textContent === '0') {
         display.textContent = '0';
@@ -111,4 +143,12 @@ enterButton.addEventListener('click', () => {
         enter = true;
         // total = 0;
     };
+});
+
+enterButton.addEventListener('mouseover', () => {
+    enterButton.classList.add('num-button-hover');
+});
+
+enterButton.addEventListener('mouseleave', () => {
+    enterButton.classList.remove('num-button-hover');
 });
