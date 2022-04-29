@@ -49,7 +49,7 @@ function operate(operator, num1, num2) {
             return multiply(num1, num2);
             break;
         case '/':
-            return multiply(num1, num2);
+            return divide(num1, num2);
             break;
     };
 };
@@ -63,6 +63,9 @@ numButtons.forEach(button => {
         if (display.textContent === '0' || displayClear === true) {
             displayClear = false;
             display.textContent = '';
+        }
+        if (operator !== '') {
+            operate(operator, total, parseInt(display.textContent));
         }
         display.textContent += button.textContent;
         displayValue = parseInt(display.textContent);
@@ -78,9 +81,12 @@ opButtons.forEach(button => {
             console.log(total, operator);
             displayClear = true;
         } else {
-            operator = button.textContent;
             total = operate(operator, total, parseInt(display.textContent));
+            operator = button.textContent;
+            display.textContent = total;
+            displayClear = true;
         }
+        display
     });
 });
 
@@ -94,6 +100,13 @@ clearButton.addEventListener('click', () => {
 
 // Event listener for enter button
 enterButton.addEventListener('click', () => {
-    total = operate(operator, total, parseInt(display.textContent));
-    display.textContent = total;
+    if (display.textContent === '0') {
+        display.textContent = '0';
+    } else {
+        total = operate(operator, total, parseInt(display.textContent));
+        display.textContent = total;
+        operator = '';
+        displayClear = true;
+        // total = 0;
+    };
 });
